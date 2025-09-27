@@ -9,3 +9,5 @@ function hacli(){
 function cd(){
     builtin cd "$@" && hacli
 }
+
+hacli
