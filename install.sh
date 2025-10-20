@@ -12,5 +12,5 @@ cd $script
 hacli=".hacli"
 bashrc="$HOME/.bashrc"
 ln -vsf $script/hacli.sh $HOME/$hacli
-echo "# hacli: hack cli" >> $bashrc
+echo "# hacli: a hack cli" >> $bashrc
 echo "source \$HOME/$hacli" >> $bashrc
