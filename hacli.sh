@@ -1,13 +1,17 @@
 # hacli: hack cli
 function hacli(){
-    if [ -f ".envrc" ]; then
-        echo "Loading hacli config..."
-        source .envrc
+    if [[ $# -eq 0 ]]; then
+        dirs=$(pwd)
+    else
+        dirs=( "$@" )
     fi
-}
 
-function cd(){
-    builtin cd "$@" && hacli
+    for dir in ${dirs[@]}; do
+        if [ -f "$dir/.envrc" ]; then
+            echo "Loading hacli config at \"$dir\"..."
+            source "$dir/.envrc"
+        fi
+    done
 }
 
 function hacli.cmds(){
@@ -21,4 +25,12 @@ function hacli.cmds(){
     done
 }
 
-hacli
+function cd(){
+    builtin cd "$@" && hacli
+}
+
+hacli $HOME
+
+if [ "$(pwd)" != "$HOME" ]; then
+    hacli
+fi
