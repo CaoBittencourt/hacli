@@ -16,7 +16,7 @@ function hacli(){
     done
 }
 
-function hacli.cmds(){
+function hacli.cmd(){
     bin="$1"
     
     shift
@@ -26,6 +26,14 @@ function hacli.cmds(){
         cmd=$(basename $file)
         cmd="${cmd%.*}"
         alias "$cmd"="$bin $file"
+    done
+}
+
+function hacli.src(){
+    files=( "$@" )
+    
+    for file in ${files[@]}; do
+        source $file
     done
 }
 
