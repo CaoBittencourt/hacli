@@ -1,1 +1,1 @@
-# hacli: A Hack Cli
+# haCLI: A Hack CLI

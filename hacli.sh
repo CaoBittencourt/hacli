@@ -47,6 +47,19 @@ function cd(){
     fi
 }
 
+function find.ext(){
+    ext="$1"
+
+    shift
+    dirs=( "$@" )
+
+    if [ -z "${dirs}" ]; then
+        dirs=$(pwd)
+    fi
+
+    echo $(find $dirs -name "*.$ext")
+}
+
 hacli $HOME
 
 if [ "$PWD" != "$HOME" ]; then
