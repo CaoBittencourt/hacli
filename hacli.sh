@@ -57,7 +57,7 @@ function find.ext(){
         dirs=$(pwd)
     fi
 
-    echo $(find $dirs -name "*.$ext")
+    echo $(find $(realpath "${dirs[@]}") -name "*.$ext")
 }
 
 hacli $HOME
